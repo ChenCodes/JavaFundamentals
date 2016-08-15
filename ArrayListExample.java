@@ -89,6 +89,7 @@ Sublist -> when using a sublist on an arraylist, make sure to create a new array
   List<Integer> list = obj.subList(0, 2);
 
 
+To sort an arraylist, we can just call Collections.sort(Object o);
 
 
 
