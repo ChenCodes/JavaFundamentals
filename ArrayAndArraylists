@@ -17,4 +17,44 @@ Arrays can contain both primitive data types as well as objects.
   
   However, a variable of a class type only stores the memory address of where the object is located, not the values inside the object. So if we have a class called SomeClass and create an object called anObject, when we look at anObject in memory, we see that it doesn't store any of the variables that belong to the object in memory. It will jsut store an address of another place in memory where the details of anObject will be. 
 
+  Interesting thing to note is that two class type variables can contain the same reference (memory address).
+    For example: 
+    PersonClass variable1 = new PersonClass("Mary", 32);
+    PersonClass variable2;
+    
+    variable2 = variable1;
+    varialble2.set("Jack", 22);
+    
+    First:
+    variable1 -> 4032
+    variable2 -> 4032
+    
+    4032 -> Mary 32
+    
+####Length
+  Length of the arraylist we can find by calling .size() on the arraylist object.
+  Length of the array we can find by calling .length on the array.
+
+####Adding elements:
+  Arraylist: we can just use the add method 
+  Arrays we don't have an add method, we instead can only assign elements in. 
+  
+  Example:
+    Integer addArrayObject[] = new Integer[3];
+    addArrayObject[0] = new Integer(8);
+    
+####Multi-dimensional
+Integer addArrayObject[][] = new Integer[3][2];
+addArrayObject[0][0] = new Integer(8);
+
+Actually, we can create a multi-dimensional arraylist.
+ArrayList[][] table = new ArrayList[10][10];
+table[0][0] = new ArrayList(); // add another ArrayList object to [0,0]
+table[0][0].add(); // add object to that ArrayList
+
+
+
+
+    
+    
 
