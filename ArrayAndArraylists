@@ -1,0 +1,20 @@
+1. What are the main differences between array and arraylist?
+
+####Resizable
+First, array are static in size. Once the size is set you can't add more elements than the size specifies.
+Arraylists are dynamic in size so you can keep adding elements and the arraylist will dynamically resize.
+
+####Performance
+Second,  performance is about the same. 
+
+####Primitives:
+Arraylist cannot contain primitive data types(like int, float, double), it can only contain Objects.
+Arrays can contain both primitive data types as well as objects.
+
+  Brief aside regarding primitives and objects. 
+  For a **primitive**, the value of the variable is stored in the memory location assigned to the variable.
+  For example, if we have an integer variable as int x = 3, then at the memory location of x, we will find a three stored there.
+  
+  However, a variable of a class type only stores the memory address of where the object is located, not the values inside the object. So if we have a class called SomeClass and create an object called anObject, when we look at anObject in memory, we see that it doesn't store any of the variables that belong to the object in memory. It will jsut store an address of another place in memory where the details of anObject will be. 
+
+
