@@ -1,0 +1,77 @@
+Advantages of Stack:
+
+Reversing things. If you had a string and you wanted to reverse it, when you put it in the stack, and then take it out, it'll be reversed.
+
+Getting back previous state. Say if you had a notepad application, you would want to be able to undo and redo things. To undo, this means that you had to have saved previous state somewhere so that you can get it back if needed.
+
+Stack/Queue are ideal when we have rules for access. Arrays are used when we have random access. 
+
+
+Array-based implementation of a stack:
+
+
+public class Stack {
+  //This keeps track of the index element in our array that we want to get back
+  private int top;
+  
+  //This holds our elements
+  private int[] storage;
+  
+  
+  Stack(int capacity) {
+    if (capacity <= 0) {
+      throw new IllegalArgumentException {
+          "Stack's capacity must be positive".
+      storage = new int[capacity];
+      top = -1;
+  }
+  
+  void push(int value) {
+    //First, we need to check if we have space to store in our array
+    if (top == storage.length) {
+      throw new StackException("Stack's underlying storage is overflow"_);
+    }
+    top++;
+    storage[top] = value;
+  }
+  
+  
+  //For this method, since we just want to get back the topmost element, we don't need to pass in a parameter
+  void peek() {
+    if (top == -1) {
+      throw new StackException("Stack is empty");
+    }
+    return storage[top];
+  }
+  
+  //Just removing the top element of the stack, need to make sure stack isn't empty
+  void pop() {
+    if (top == -1) {
+      throw new StackException("Stack is empty");
+    }
+    top--;
+  }
+  
+  //If stack is empty, then top will be -1
+  boolean isEmpty() {
+    return (top == -1);
+  }
+  
+  public class StackException extends RuntimeException {
+    public StackException(String message) {
+      super(message);
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+
+
+
