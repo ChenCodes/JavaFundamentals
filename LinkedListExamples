@@ -1,0 +1,102 @@
+/**Inserting a node into the nth position of a linked list.**/
+
+//Recursive solution
+Node InsertNth(Node head, int data, int position) {
+    
+    //base case, if we are in the right position, that means we can create our new node and then set the head to 
+     if (position == 0) {
+        Node node = new Node();
+        node.data = data;
+        
+        //This line means that 
+        node.next = head;
+        return node;
+    }
+    
+    //The trick here is that we want to set the head.next to the new node that was created. 
+    //What this code does is that we continually chop down our entire linked list, we stop when we're at the right position, and then just set it to the next of head.
+    head.next = InsertNth(head.next, data, position - 1);
+    return head;
+}
+
+
+Node insertNth(Node head, int data, int position) {
+    //create a dummy node where it points to the entire original linked list
+    Node dummy = new Node();
+    dummy.next = head;
+
+    //assign runner to the dummy list so that we can iterate through it 
+    Node runner = dummy;
+    
+    //Iterate through until we land on the position where the next is going to be the node that we want to insert in. 
+    for (int i = 0; i < position; ++i) {
+        runner = runner.next;
+    }
+
+    //Create new node
+    Node node = new Node();
+    node.data = data;
+    
+    //Set the new node's next to the runner.next
+    node.next = runner.next;
+    
+    //Set the runner's next to the new node. 
+    runner.next = node;
+  
+    //Return dummy.next because that's the head of the linked list. 
+    return dummy.next;
+}
+
+//Iterative solution for deleting a node 
+Node Delete(Node head, int position) {
+  // Complete this method
+  
+    //Create a runner 
+    Node dummy = new Node();
+    dummy.next = head;
+    Node runner = dummy;
+    
+    //Iterate through runner until we get to the position that we want 
+    for (int counter = 0; counter < position; counter ++) {
+        runner = runner.next;
+    }
+    
+    //Delete the node simply by setting the next to the next.next
+    runner.next = runner.next.next;
+    
+    return dummy.next;
+}
+
+
+//Recursive solution
+void ReversePrint(Node head) {
+    if(head == null) {        
+    } else {
+    
+    //The trick is here: When we do a recursive call, and we put the print statement after, this will run in reverse.
+    //If we put the print statement before the recursive call, then it will print things out normally. 
+    ReversePrint(head.next);
+    System.out.println(head.data);
+    }
+}
+
+//Recursive Solution
+public static Node reverseLinkedList(Node node) {  
+     if (node == null || node.next == null) {  
+         return node;  
+     }  
+  
+     Node remaining = reverseLinkedList(node.next);  
+     //This reverses the link between the second to last node and the last node
+     node.next.next = node;  
+     
+     //This removes the link between the second to last node and the last node 
+     node.next = null;  
+    return remaining;  
+ }  
+
+
+
+
+
+
