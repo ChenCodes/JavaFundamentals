@@ -62,6 +62,73 @@ public class Stack {
       super(message);
     }
   }
+}
+
+
+
+
+Priority Queue: 
+  It's ordering is dependent on how the comparator decides to order things. 
+  
+Implementation using array:
+
+public class PriorityQueue {
+  private Comparable[] array;
+  private int index = 0;
+  
+  public PriorityQueue() {
+    //Chose 16 arbitrarily
+    array = new Comparable[16];
+    index = 0;
+  }
+  
+  public boolean empty() {
+    return index == 0;
+  }
+  
+  public void insert(Comparable item) {
+    if (index == array.length) {
+      resize();
+    }
+    
+    //We can just put it in, we don't need to know where to put it.
+    array[index] = item;
+    index++;
+  }
+  
+  
+  //In this method, we have to traverse the array to find the largest value. 
+  public Comparable remove() {
+  if (index == 0) {
+    return null;
+  }
+  
+  int maxIndex = 0;
+  
+  for(int i = 1; i < index; i++) {
+    if (array[i].compareTo(array[maxIndex]) > 0) {
+      maxIndex = i;
+    }
+  }
+  
+  //This is the largest element in the array.
+  Comparable result = array[maxIndex];
+  
+  //Finally, since we found the largest 
+  index--;
+  
+  //This moves the last element from our array and insert it in the place where the largest element had occupied. 
+  array[maxIndex] = array[index];
+  return result;  
+  }
+    
+}
+
+  
+  
+  
+  
+
   
   
   
