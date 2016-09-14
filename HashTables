@@ -1,0 +1,39 @@
+Speedy insertion and searching:
+  array implementation.
+  
+  public class HashFunction {
+    String[] theArray;
+    int arraySize;
+    int itemsInArray = 0;
+    
+    public static void main(String[] args) {
+    
+    
+    
+    }
+    
+    HashFunction(int size) {
+      arraySize = size;
+      theArray = new String[size];
+      Arrays.fill(theArray, "-1");
+    }
+    
+    It's best to use primes when doing the mod so that we reduce the number of collisions that can occur. 
+    For example, if we had data that was like 30, 60, 90, etc.
+    
+    Example to better understand hashtables:
+        Let's say you have a bunch of students who all have student IDs.
+        One hash function could be that the last three digits of their 6-digit IDs will be stored in the array location. So, if we have:
+        123456, then that student will be stored in index 456. We will then need an array of 999 elements, where each element is actually a list of students. 
+        
+        The benefit to this is that we don't have to iterate through an array looking for a specific student; we can just go straight to the appropriate index and then loop through that to get the student's info. 
+        
+        
+  
+  How do hash tables deal with collisions?
+    Option 1: By having each bucket contain a linked list of elements that are hashed to a bucket. 
+    Option 2: When all hash table entries are full, hash table can resize and then perform mod so that the elements will get sent to different buckets. 
+    
+    
+
+        
