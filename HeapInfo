@@ -1,0 +1,120 @@
+Two rules for heaps:
+  1. Every row must be complete, but the very last row can be incomplete.
+  2. Parent keys are always bigger than their children
+  
+  Difference between binary heap and heap: the left child isn't always left than the right child.
+  Very fast at insertion and deletion
+  Very slow at traversal and searching 
+  
+  Steps for removal:
+    First, get rid of the node we don't want. Then, we move up the bottommost rightmost element to that spot. Then, we start swapping it down until the parents are larger than their children. 
+    
+  Implementation is usually in the form of an array.
+  
+  We can have something like this:
+  [0,  1,  2, 3, 4, 5, 6]
+  [15, 10, 9, 6, 7, 6, 3]
+  
+  The rule is:
+  Parent with index k has children at indices: 2k+1 and 2k+2
+  Children at index k has parent: (k - 1) / 2 (integer division)
+  
+  Method for sifting up a new element:
+  
+  private void siftUp() {
+    int k = items.size() - 1;
+    while (k > 0) {
+      int p = (k - 1)/2;
+      T item = items.get(k);
+      T parent = items.get(p);
+      
+      if (item.compareTo(parent) > 0) {
+        //Swap
+        items.set(k, parent);
+        items.set(p, temp);
+        
+        //move up one level
+        k = p;
+      } else {
+        break;
+      }
+    }
+  }
+  
+  Given our array from above, we can try working through the iterations.
+  first iteration:
+    k = 9 
+    p = 4
+    item = 12
+    parent = 9
+    
+    since item is > parent, we swap the two
+    items.set(k, parent)
+    items.set(p, item)
+    
+    k = 4 now
+  
+  second iteration: 
+    k = 4
+    p = 1
+    item = 12
+    parent = 10
+    since item > parent
+    swap, 
+    items.set(k, parent)
+    items.set(p, item)
+    
+    k = 1 now 
+    
+    last iteration we swap again. 
+    
+    
+    
+    
+  Siftdown method (applied when the topmost root node is removed):
+    
+  private void siftDown() {
+    int k = 0;
+    
+    //left child 
+    int l = 2k + 1;
+    
+    //while the left child is within array bounds 
+    while (l < items.size()) {
+    
+      int max = l, r = l + 1;
+      
+      //This nested if part is for determining the larger of the two children of a given parent. 
+      if (r < items.size()) { //if there is a right child 
+        
+        if (items.get(r).compareTo(items.get(l)) > 0 ) { //if the right child is indeed larger than the left child, then we increment max by 1 since it was l, but it is now r. 
+          max++;
+        }
+      }
+      
+      //This if case is used to see if the max of the children is larger than our current element. If it is, then we switch them. 
+      if (items.get(k).compareTo(items.get(max)) < 0) {
+        //switch
+        T temp = items.get(k);
+        items.set(k, items.get(max));
+        items.set(max, temp);
+        
+        //This updates the current element position we're looking at to be the child position, we also recalculate the new children of that parent position. 
+        k = max;
+        l = 2k + 1;
+      } else {
+        break;
+      }
+    }
+  }
+  
+  
+  
+  
+  
+      
+    
+    
+
+    
+  
